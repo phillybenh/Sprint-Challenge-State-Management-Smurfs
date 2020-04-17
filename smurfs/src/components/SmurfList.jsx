@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 
 // import actions
-import { smurfRetrieveAction } from "../store/actions";
+import { smurfGETAction } from "../store/actions";
 
-const SmurfList = props => {
+const SmurfList = (props) => {
   // useEffect to  load smurfs on page load/refresh
-    useEffect(() => {
-      props.smurfRetrieveAction();
-    }, []);
+  useEffect(() => {
+    props.smurfGETAction();
+  }, []);
 
   return (
     <>
@@ -43,7 +43,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { smurfRetrieveAction })(SmurfList);
+export default connect(mapStateToProps, { smurfGETAction })(SmurfList);
 
 {
   /*

@@ -1,6 +1,6 @@
 .App {
 padding: 25px;}
-.listContainer {
+.listContainer, .formContainer {
   width: 80%;
   margin: 0 auto;
 
