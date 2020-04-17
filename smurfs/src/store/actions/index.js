@@ -6,8 +6,6 @@ export {
 } from "./smurfGETAction"
 
 export {
-    POST_SMURFS_SUCCESS,
-    POST_SMURFS_FAIL,
-    POST_SMURFS_START,
+    POST_SMURF,
     smurfPOSTAction
 } from "./smurfPOSTAction"

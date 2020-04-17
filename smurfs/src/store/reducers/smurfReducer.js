@@ -5,7 +5,7 @@ import {
 } from "../actions";
 
 
-const initialState = {
+export const initialState = {
     smurfs: [],
     isFetching: false,
     error: "",
@@ -30,6 +30,7 @@ export const smurfReducer = (state = initialState, action) => {
                 isFetching: false,
                 error: action.payload
             };
+            
         default:
             return state;
     }

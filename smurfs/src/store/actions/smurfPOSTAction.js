@@ -1,31 +1,25 @@
 import axios from 'axios';
 
-export const POST_SMURFS_SUCCESS = "FETCH_SMURFS_SUCCESS";
-export const POST_SMURFS_START = "POST_SMURFS_START";
-export const POST_SMURFS_FAIL = "POST_SMURFS_FAIL";
+export const POST_SMURF = "POST_SMURF";
 
+export const smurfPOSTAction = newSmurf => {
 
-export const smurfPOSTAction = (newSmurf) => {
+    return dispatch => {
+        dispatch({ type: 'POST_SMURF' });
 
-    // return dispatch => {
-    //     dispatch({ type: 'FETCH_SMURFS_START' });
+        axios
+            .post('http://localhost:3333/smurfs', newSmurf)
+            .then(response => {
+                console.log(" post response", response)
+                
+            })
+            // .catch(error => {
+            //      console.log("error", error)
+            //     // dispatch({
+            //     //     type: 'POST_SMURFS_FAIL',
+            //     //     payload: `${error}`
+            //     // })
+            // })
 
-    //     axios
-    //         .get('http://localhost:3333/smurfs')
-    //         .then(response => {
-    //             console.log("response", response)
-    //             dispatch({
-    //                 type: 'FETCH_SMURFS_SUCCESS',
-    //                 payload: response.data
-    //             })
-    //         })
-    //         .catch(error => {
-    //             // console.log("error", error)
-    //             dispatch({
-    //                 type: 'FETCH_SMURFS_FAIL',
-    //                 payload: `${error}`
-    //             })
-    //         })
-
-    // }
+    }
 }

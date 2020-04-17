@@ -1,26 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 
 // import actions
-import { smurfGETAction, smurfPOSTAction } from "../store/actions";
+import { smurfPOSTAction } from "../store/actions/smurfPOSTAction";
 
 const SmurfForm = (props) => {
-  // useEffect to  load smurfs on page load/refresh
-  //   useEffect(() => {
-  //     props.smurfGETAction();
-  //   }, []);
+  
   const [newSmurf, setNewSmurf] = useState({
     name: "",
-    age: null,
+    age: "",
     height: "",
-    id: null,
   });
-  const [post, setPost] = useState([]);
 
   //event handlers
   const inputChange = (event) => {
-    event.persist();
+    event.preventDefault();
     const newFormData = {
       ...newSmurf,
       [event.target.name]: event.target.value,
@@ -29,17 +24,18 @@ const SmurfForm = (props) => {
   };
   const formSubmit = (event) => {
     event.preventDefault();
-    smurfPOSTAction(newSmurf);
+    props.smurfPOSTAction(newSmurf);
   };
-
+console.log(props)
   return (
     <>
       <h2>Enter a New Smurf:</h2>
       <div className="formContainer">
-        {props.isPosting && (
+        {/* {props.isPosting && (
           <Loader type="Grid" color="#00BFFF" height={80} width={80} />
-        )}
-        <form onSubmit={formSubmit}>
+        )} */}
+        {/* <form onSubmit={() => formSubmit()}> */}
+        <form>
           <label htmlFor="name">Name: </label>
           <input
             id="name"
@@ -65,7 +61,12 @@ const SmurfForm = (props) => {
             onChange={inputChange}
           />
 
-          <button className="submitBtn">Submit Smurf</button>
+          <button
+            className="submitBtn"
+            onClick={props.smurfPOSTAction(newSmurf)}
+          >
+            Submit Smurf
+          </button>
         </form>
         {props.error && <p>{props.error}</p>}
       </div>
@@ -73,16 +74,18 @@ const SmurfForm = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log(state.smurfs);
-  return {
-    smurfs: state.smurfs.smurfs,
-    isPosting: state.smurfs.isFetching,
-    error: state.smurfs.error,
-  };
-};
+// const mapStateToProps = (state) => {
+//   console.log("form state", state.smurfs);
+//   return {
+//     smurfs: state.smurfs.smurfs,
+//     isPosting: state.smurfs.isFetching,
+//     error: state.smurfs.error,
+//     // newSmurf2: state.newSmurf
+//   };
+// };
+// mapStateToProps
 
-export default connect(mapStateToProps, { smurfGETAction, smurfPOSTAction })(
+export default connect(null, { smurfPOSTAction })(
   SmurfForm
 );
 

@@ -13,7 +13,7 @@ export const smurfGETAction = () => {
         axios
             .get('http://localhost:3333/smurfs')
             .then(response => {
-                console.log("response",response)
+                // console.log("response",response)
                 dispatch({
                     type: 'FETCH_SMURFS_SUCCESS',
                     payload: response.data
