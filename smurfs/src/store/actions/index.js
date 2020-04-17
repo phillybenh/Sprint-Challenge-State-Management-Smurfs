@@ -1,6 +1,6 @@
 export {
-    // FETCH_CHARACTERS_START,
-    // FETCH_CHARACTERS_SUCCESS,
-    // FETCH_CHARACTERS_FAIL,
+    FETCH_SMURFS_START,
+    FETCH_SMURFS_SUCCESS,
+    FETCH_SMURFS_FAIL,
     smurfRetrieveAction
 } from "./smurfRetrieveAction"

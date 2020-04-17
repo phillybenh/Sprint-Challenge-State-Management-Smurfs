@@ -13,7 +13,7 @@ const SmurfList = props => {
 
   return (
     <>
-      <h2>Smurf List</h2>
+      <h2>Smurf List:</h2>
       <div className="listContainer">
         {props.isFetching && (
           <Loader type="Grid" color="#00BFFF" height={80} width={80} />
